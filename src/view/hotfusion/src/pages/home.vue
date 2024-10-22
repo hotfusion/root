@@ -35,8 +35,8 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.onSlideChange({activeIndex:0});
-    },300)
+      this.onSlideChange({activeIndex:this.activeIndex});
+    },100)
   }
 }
 </script>
@@ -56,7 +56,7 @@ export default {
         <Aboutus :parentIndex="activeIndex"/>
       </swiper-slide>
       <swiper-slide>
-        <Contactus :parentIndex="activeIndex"></Contactus>
+        <Contactus v-if="activeIndex === 2" :parentIndex="activeIndex"></Contactus>
       </swiper-slide>
     </swiper>
   </container>

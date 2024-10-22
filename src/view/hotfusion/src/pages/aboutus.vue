@@ -16,7 +16,7 @@ export default {
     onSlideChange(e){
       this.activeIndex = e.activeIndex;
       setTimeout(() => {
-        let p = [...this.$refs.container.querySelectorAll('.paragraph')];
+        let p = [...this.$el.querySelectorAll('.paragraph')];
 
         p.forEach((x, i) => {
           if (i === e.activeIndex) {
@@ -34,18 +34,21 @@ export default {
   },
   watch : {
     'parentIndex'(){
-      this.onSlideChange({activeIndex:this.activeIndex});
+      setTimeout(() => {
+        this.onSlideChange({activeIndex:this.activeIndex});
+      },100)
     }
   },
   mounted() {
-    this.onSlideChange({activeIndex:this.activeIndex});
+    setTimeout(() => {
+      this.onSlideChange({activeIndex:this.activeIndex});
+    },100)
   }
 }
 </script>
 
 <template>
-  <container ref="container">
-    <swiper :pagination="true" direction="vertical" style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
+    <swiper  :pagination="true" direction="vertical" style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
       <swiper-slide>
         <div class="paragraph" center>
           <h1 value="What can we do?"></h1>
@@ -71,5 +74,4 @@ export default {
         </div>
       </swiper-slide>
     </swiper>
-  </container>
 </template>
