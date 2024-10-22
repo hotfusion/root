@@ -47,6 +47,7 @@ export default {
       <swiper-slide>
         <div class="paragraph" center ref="paragraph">
           <h1 value="HotFusion.com"></h1>
+          <div class="line"></div>
           <p>
             HotFusion is an IT company with 15 years of experience, specializing in building and maintaining infrastructure for small to medium-sized businesses. We focus on delivering reliable support and solutions to keep your operations running smoothly.
           </p>
