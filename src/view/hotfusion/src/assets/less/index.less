@@ -10,33 +10,64 @@ html {
         display: flex;
         align-items: center;
         justify-content: center;
-        .swiper-slide{
-          align-items: center;
-          display: flex;
-          justify-content: center;
-          .paragraph {
-            width: 700px;
-            padding: 60px;
-            box-sizing: border-box;
-            * {
-              font-family: Poppins, sans-serif;
-            }
-            h1{
-              font-size: 20px;
-              margin: 0;
-              padding: 0;
-              line-height: 35px;
-            }
-            p{
-              line-height: 25px;
-            }
-            &[center]{
+        .swiper {
+          width: 100%;
+          .swiper-slide{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            .paragraph {
+              width: 700px;
+              padding: 60px;
+              box-sizing: border-box;
               * {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                text-align: center;
+                font-family: Poppins, sans-serif;
+              }
+              h1{
+                font-size: 20px;
+                margin: 0;
+                padding: 0;
+                line-height: 35px;
+              }
+              p{
+                line-height: 25px;
+              }
+              &[center]{
+                * {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-direction: column;
+                  text-align: center;
+                }
+              }
+            }
+          }
+          .swiper-pagination-horizontal {
+            .swiper-pagination-bullet{
+              height: 40px !important;
+              border-radius: 4px !important;
+            }
+          }
+          .swiper-pagination-vertical {
+            .swiper-pagination-bullet{
+              width: 40px !important;
+              border-radius: 4px !important;
+            }
+          }
+        }
+        .form {
+          .field {
+            input {
+              min-height: 50px;
+            }
+          }
+          .footer {
+            > div {
+              width: 100%;
+              button {
+                height: 50px;
+                width: 100%;
               }
             }
           }

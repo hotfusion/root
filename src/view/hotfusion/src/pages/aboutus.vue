@@ -1,7 +1,10 @@
 <script lang="ts">
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import * as KUTE from "kute.js";
 export default {
+  props : ['parentIndex'],
   data : () => ({
+    activeIndex:0,
     modules: [
       Navigation,
       Pagination,
@@ -10,22 +13,42 @@ export default {
     ],
   }),
   methods : {
-    onSlideChange(){
+    onSlideChange(e){
+      this.activeIndex = e.activeIndex;
+      setTimeout(() => {
+        let p = [...this.$refs.container.querySelectorAll('.paragraph')];
 
+        p.forEach((x, i) => {
+          if (i === e.activeIndex) {
+
+            let element = x.querySelector('h1');
+                element.innerHTML = '';
+            KUTE.default.to(element, {text: element.getAttribute('value')}).start();
+          }
+        })
+      })
     },
     onSwiper(){
 
     }
+  },
+  watch : {
+    'parentIndex'(){
+      this.onSlideChange({activeIndex:this.activeIndex});
+    }
+  },
+  mounted() {
+    this.onSlideChange({activeIndex:this.activeIndex});
   }
 }
 </script>
 
 <template>
-  <container>
+  <container ref="container">
     <swiper :pagination="true" direction="vertical" style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
       <swiper-slide>
         <div class="paragraph" center>
-          <h1>What can we do?</h1>
+          <h1 value="What can we do?"></h1>
           <p>
             We can set up essential online tools for your office to meet your daily business needs. Our services include managing your domain name server, email server, hosting, and—most importantly—providing 24/7 security and support. You focus on your work, and we’ll handle the maintenance.
           </p>
@@ -33,9 +56,17 @@ export default {
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
-          <h1>We can fix your email problems!</h1>
+          <h1 value="We can maintain your online infrastructure!"></h1>
           <p>
-            Do you need a solid email support for your business? We provide solutions either for cloud solution or dedicated solution.
+            We understand the importance of your online presence. Our team can manage your website and mobile app environments, ensuring everything runs smoothly. We also handle domain name servers and offer reliable support with secure services to keep your digital operations safe and efficient.
+          </p>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="paragraph" center>
+          <h1 value="We can fix your email problems!"></h1>
+          <p>
+            Need reliable email support for your business? We offer robust solutions tailored to your needs, whether you're looking for cloud-based or dedicated options. Our expertise spans popular providers like Office 365, Bluehost, GoDaddy, and many more. Let us help you keep your communication seamless and secure.
           </p>
         </div>
       </swiper-slide>
