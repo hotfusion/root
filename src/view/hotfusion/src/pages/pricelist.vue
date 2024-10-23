@@ -64,7 +64,7 @@ export default {
       </div>
       <div style="height: 100%">
         <button>
-          Basic Support and Maintenance
+          Get a Quote
         </button>
       </div>
     </swiper-slide>
@@ -81,7 +81,7 @@ export default {
       </div>
       <div style="height: 100%">
         <button>
-          Standard Development and Integration
+          Get a Quote
         </button>
       </div>
     </swiper-slide>
@@ -98,7 +98,7 @@ export default {
       </div>
       <div style="height: 100%">
         <button>
-          Standard Development and Integration
+          Get a Quote
         </button>
       </div>
     </swiper-slide>
@@ -115,7 +115,7 @@ export default {
       </div>
       <div style="height: 100%">
         <button>
-           Contact Us
+          Get a Quote
         </button>
       </div>
     </swiper-slide>

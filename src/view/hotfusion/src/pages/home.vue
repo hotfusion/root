@@ -14,6 +14,31 @@ export default {
   methods : {
     onSlideChange(e){
       this.activeIndex = e.activeIndex;
+      setTimeout(() => {
+        console.log(this.$el)
+        let p
+            = [...this.$el.querySelectorAll('.swiper-slide')];
+
+        let triangle
+            = p[0].querySelector('.triangle');
+
+        KUTE.default.fromTo(triangle,{rotate:0},{rotate:-720});
+
+        p.forEach((x,i) => {
+          if(i === e.activeIndex){
+            let element
+                = x.querySelector('h1');
+
+            element
+                .innerHTML = '';
+
+            KUTE.default.to(element, {
+              text : element.getAttribute('value')
+            }).start();
+
+          }
+        })
+      })
     }
   },
 }
@@ -36,6 +61,20 @@ export default {
         <button>Contact Us</button>
       </div>
     </swiper-slide>
-    <swiper-slide class="second-floor"></swiper-slide>
+    <swiper-slide>
+      <div class="paragraph" center ref="paragraph">
+        <div class="icon">
+          <i class="fas fa-glasses"></i>
+        </div>
+        <h1 value="Who we are?"></h1>
+        <div class="line"></div>
+        <p>
+          We are a passionate team of developers who love to code and contribute. For us, coding isn’t just a job—it’s an art form. While we value our professional work, we also enjoy giving back and contributing to the community whenever we can.
+        </p>
+      </div>
+      <div style="height: 100%">
+        <button>Contact Us</button>
+      </div>
+    </swiper-slide>
   </swiper>
 </template>
