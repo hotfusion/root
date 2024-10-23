@@ -14,15 +14,15 @@ export default {
   }),
   methods : {
     onSlideChange(e){
-      this.activeIndex = e.activeIndex;
+      this.activeIndex
+          = e.activeIndex;
+
       setTimeout(() => {
         let p = [...this.$el.querySelectorAll('.paragraph')];
-
         p.forEach((x, i) => {
           if (i === e.activeIndex) {
-
             let element = x.querySelector('h1');
-            element.innerHTML = '';
+                element.innerHTML = '';
             KUTE.default.to(element, {text: element.getAttribute('value')}).start();
           }
         })
@@ -52,9 +52,6 @@ export default {
     <swiper-slide>
       <div class="paragraph" center>
         <div class="icon">
-          <div class="cube"></div>
-          <div class="circle"></div>
-          <div class="triangle"></div>
           <i class="fas fa-cash-register"></i>
         </div>
         <h1 value="How much our service cost?"></h1>

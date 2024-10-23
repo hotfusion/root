@@ -1,5 +1,5 @@
 <script  lang="ts">
-import {Layout,Component,Components, Element} from "@hotfusion/ui"
+import {Fetch,Layout,Component,Components, Element, Warning} from "@hotfusion/ui"
 import * as KUTE from "kute.js";
 export default {
   props:['enable'],
@@ -19,16 +19,65 @@ export default {
     this.Layout.push(
         new Component( Components.form,{
           elements : [
-            new Element('input').setId('name').setLabel('Full Name').setIcon('fas fa-user').setPlaceholder('Enter your last and first name').setDisable(true).setType((value) => {
-              throw new Error('error')
-            }),
-            new Element('input').setId('email').setLabel('Email Address').setIcon('fas fa-at').setPlaceholder('Enter your email address').setDisable(true),
-            new Element('input').setId('phone').setLabel('Phone Number').setIcon('fas fa-phone').setPlaceholder('Enter your phone number').setDisable(true),
-            new Element('textarea').setId('message').setLabel('Message').setIcon('fas fa-envelope-square').setPlaceholder('Enter your message').setDisable(true)
+            new Element('input')
+                .setId('name')
+                .setValue('vadim')
+                .setLabel('Full Name')
+                .setIcon('fas fa-user')
+                .setPlaceholder('Enter your last and first name')
+                .setDisable(true)
+                .setMinValueLength(4)
+                .setMaxValueLength(100),
+            new Element('input')
+                .setValue('Korolov.vadim@gmail.com')
+                .setId('email')
+                .setLabel('Email Address')
+                .setIcon('fas fa-at')
+                .setPlaceholder('Enter your email address')
+                .setDisable(true)
+                .setMinValueLength(4)
+                .setMaxValueLength(100)
+                .setType((event, element) => {
+                  let email = element.getValue()?.split('@')
+                  if(!email?.[1] || !email?.[1]?.split('.')?.[1] || email[1].split('.')?.[1]?.length < 2)
+                    throw new Error('The email address is not valid');
+                }),
+            new Element('input')
+                .setValue('5149996659')
+                .setId('phone')
+                .setLabel('Phone Number')
+                .setIcon('fas fa-phone')
+                .setPlaceholder('Enter your phone number')
+                .setDisable(true)
+                .setMinValueLength(9)
+                .setMaxValueLength(11)
+                .setType((event, element) => {
+                  let phone = element.getValue()
+                  if(isNaN(phone))
+                    throw new Error('The phone number is not valid');
+                }),
+            new Element('textarea')
+                .setValue('Hello, my name is vadim and i am looking for someone to work with!')
+                .setId('message')
+                .setLabel('Message')
+                .setIcon('fas fa-envelope-square')
+                .setPlaceholder('Enter your message')
+                .setDisable(true)
+                .setMinValueLength(20)
+                .setMaxValueLength(2000)
+
           ],
           footer : [
-              new Element('button').setLabel('Send us a message')
+              new Element('button').setLabel('Send us a message').setDisable(true).on('click', ({element}) => {
+                element.setBusy(true);
+                Fetch.post('https://hotfusion.ca/cgi-bin/mail.php',this.Layout[0].component.getFormAsObject()).then(e => {
+                  console.log('retrun',e);
+                })
+              })
           ]
+        }).on('keydown',async () => {
+          let isValid = this.Layout[0].component.isValid()
+            this.Layout[0].component.footer[0].setDisable(!isValid);
         })
     );
     setTimeout(() => {
