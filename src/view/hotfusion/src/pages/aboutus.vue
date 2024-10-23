@@ -51,6 +51,12 @@ export default {
     <swiper  :pagination="true" direction="vertical" style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
       <swiper-slide>
         <div class="paragraph" center>
+          <div class="icon">
+            <div class="cube"></div>
+            <div class="circle"></div>
+            <div class="triangle"></div>
+            <i class="fas fa-briefcase"></i>
+          </div>
           <h1 value="What can we do?"></h1>
           <p>
             We can set up essential online tools for your office to meet your daily business needs. Our services include managing your domain name server, email server, hosting, and—most importantly—providing 24/7 security and support. You focus on your work, and we’ll handle the maintenance.

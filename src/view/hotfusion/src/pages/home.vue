@@ -2,9 +2,11 @@
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import Aboutus from "./aboutus.vue";
 import Contactus from "./contactus.vue";
+import PriceList from "./pricelist.vue";
 import * as KUTE from 'kute.js'
+import {SwiperSlide} from "swiper/vue";
 export default {
-  components : {Contactus, Aboutus},
+  components : {SwiperSlide, Contactus, Aboutus,PriceList},
   data : () => ({
     activeIndex: 0,
     modules: [
@@ -18,14 +20,20 @@ export default {
     onSlideChange(e){
       this.activeIndex = e.activeIndex;
       setTimeout(() => {
-        let p = [...this.$refs.container.children];
+        let p
+            = [...this.$refs.container.children];
         p.forEach((x,i) => {
           if(i === e.activeIndex){
-            let element = x.querySelector('h1');
-            element.innerHTML = '';
-            KUTE.default.to(element, {text: element.getAttribute('value')}).start();
-          }
+            let element
+                = x.querySelector('h1');
 
+            element
+                .innerHTML = '';
+
+            KUTE.default.to(element, {
+              text : element.getAttribute('value')
+            }).start();
+          }
         })
       })
     },
@@ -46,6 +54,12 @@ export default {
     <swiper :pagination="true"  style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
       <swiper-slide>
         <div class="paragraph" center ref="paragraph">
+          <div class="icon">
+            <div class="cube"></div>
+            <div class="circle"></div>
+            <div class="triangle"></div>
+            <i class="fas fa-server"></i>
+          </div>
           <h1 value="HotFusion.com"></h1>
           <div class="line"></div>
           <p>
@@ -57,7 +71,10 @@ export default {
         <Aboutus :parentIndex="activeIndex"/>
       </swiper-slide>
       <swiper-slide>
-        <Contactus v-if="activeIndex === 2" :parentIndex="activeIndex"></Contactus>
+        <PriceList></PriceList>
+      </swiper-slide>
+      <swiper-slide>
+        <Contactus :enable="activeIndex === 3"></Contactus>
       </swiper-slide>
     </swiper>
   </container>
