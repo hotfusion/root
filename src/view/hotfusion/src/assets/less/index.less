@@ -16,11 +16,14 @@ html {
           .swiper-slide{
             display: flex;
             align-items: center;
-            justify-content: start;
+            justify-content: space-around;
             flex-direction: column;
+            box-sizing: border-box;
+            padding-bottom: 20px;
+            overflow:auto;
             .paragraph {
-              width: 700px;
-              padding: 35px;
+              max-width: 700px;
+              width: 100%;
               box-sizing: border-box;
               color: #8A94A7;
               * {
@@ -31,13 +34,15 @@ html {
               h1{
                 font-size: 24px;
                 margin: 0;
-                padding: 0;
                 line-height: 35px;
                 color: #fff;
+                margin-bottom: 20px;
+                padding: 0 20px;
               }
               p{
-                line-height: 25px;
+                line-height: 30px;
                 font-size: 15px;
+                padding: 0 40px;
               }
               &[center]{
                 * {
@@ -60,7 +65,17 @@ html {
                   font-size: 110px;
                   color: #ffdc30;
                 }
-                .triangle{}
+                .triangle{
+                  width: 0;
+                  height: 0;
+                  border-style: solid;
+                  border-width: 0 100px 150px 100px;
+                  border-color: transparent transparent #181a1e transparent;
+                  transform: rotate(0deg);
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                }
               }
             }
           }
@@ -83,86 +98,100 @@ html {
             }
           }
         }
-        .splitpanes__pane{
-          align-items: center;
-          .form {
-            justify-content: start;
-            max-width: 500px;
-            padding: 0;
-            textarea {
-              &::-webkit-input-placeholder { /* WebKit browsers */
-                line-height: 20px !important;
+        .splitpanes{
+          height: auto;
+          .splitpanes__pane{
+            align-items: center;
+            height: auto;
+            .form {
+              justify-content: start;
+              max-width: 500px;
+              padding: 20px;
+              textarea {
+                &::-webkit-input-placeholder { /* WebKit browsers */
+                  line-height: 20px !important;
+                }
+                &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                  line-height: 20px;
+                }
+                &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                  line-height: 20px;
+                }
+                &:-ms-input-placeholder { /* Internet Explorer 10+ */
+                  line-height: 20px ;
+                }
               }
-              &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-                line-height: 20px;
-              }
-              &::-moz-placeholder { /* Mozilla Firefox 19+ */
-                line-height: 20px;
-              }
-              &:-ms-input-placeholder { /* Internet Explorer 10+ */
-                line-height: 20px ;
-              }
-            }
 
-            .field {
-              .input-icon {
-                color: #ccc;
-                font-size: 20px;
-              }
-              > label {
-                color: #fffdfa;
-                font-weight: bold;
-                font-family: Poppins, sans-serif;
-                font-size: 14px;
-              }
-              &[type="textarea"]{
+              .field {
                 .input-icon {
-                  top: 20px;
-                }
-                textarea{
-                  height: 150px !important;
-                }
-              }
-              .input-container {
-                input[type="text"],textarea {
-                  background-color: #1c1f25 !important;
-                  height: 50px;
-                  border: solid 1px #232c3f;
-                  box-shadow: none !important;
-                  color: #fff;
-                  padding-left: 40px !important;
+                  color: #ccc;
                   font-size: 20px;
-                  font-family: Outfit,sans-serif;
-                  &::placeholder {
-                    opacity: 0.8;
-                    color: #3a404c;
-                    font-size: 15px;
-                    line-height: 0;
-                    margin-top:50px
+                }
+                > label {
+                  color: #fffdfa;
+                  font-weight: bold;
+                  font-family: Poppins, sans-serif;
+                  font-size: 14px;
+                }
+                &[type="textarea"]{
+                  .input-icon {
+                    top: 20px;
+                  }
+                  textarea {
+                    height: 150px !important;
                   }
                 }
-              }
-            }
-            .footer {
-              > div {
-                width: 100%;
-                button {
-                  height: 50px;
-                  width: 100%;
-                  font-weight: bold;
-                  font-size: 15px;
-                  .container {
-                    background-color: #d7bc34;
-                    span {
+                .input-container {
+                  input[type="text"], textarea {
+                    background-color: #1c1f25 !important;
+                    height: 50px;
+                    border: solid 1px #232c3f;
+                    box-shadow: none !important;
+                    color: #fff;
+                    padding-left: 40px !important;
+                    font-size: 20px;
+                    font-family: Outfit,sans-serif;
+                    &::placeholder {
+                      opacity: 0.8;
+                      color: #3a404c;
                       font-size: 15px;
+                      line-height: 0;
+                      margin-top:50px
                     }
                   }
+                }
+              }
+              .footer {
+                > div {
+                  width: 100%;
                 }
               }
             }
           }
         }
+        button {
+          height: 50px;
+          width: 100%;
+          font-weight: bold;
+          font-size: 15px;
+          padding: 15px;
+          background-color: #f8f8f8 !important;
+          .container {
+            background-color: #f8f8f8 !important;
+            span {
+              font-size: 15px;
+            }
+          }
+        }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .swiper-slide {
+    &::-webkit-scrollbar{
+      width: 0;
     }
   }
 }

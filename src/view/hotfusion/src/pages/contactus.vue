@@ -53,7 +53,6 @@ export default {
 </script>
 
 <template>
-  <div>
     <div class="paragraph" center ref="paragraph">
       <div class="icon">
         <div class="cube"></div>
@@ -69,5 +68,5 @@ export default {
       </p>
     </div>
     <layout :layout="Layout"></layout>
-  </div>
+
 </template>

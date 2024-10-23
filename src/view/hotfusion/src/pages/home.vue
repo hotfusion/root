@@ -66,6 +66,9 @@ export default {
             HotFusion is an IT company with 15 years of experience, specializing in building and maintaining infrastructure for small to medium-sized businesses. We focus on delivering reliable support and solutions to keep your operations running smoothly.
           </p>
         </div>
+        <div style="height: 100%">
+          <button>Contact Us</button>
+        </div>
       </swiper-slide>
       <swiper-slide>
         <Aboutus :parentIndex="activeIndex"/>

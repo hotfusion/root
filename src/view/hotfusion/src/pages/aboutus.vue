@@ -62,6 +62,11 @@ export default {
             We can set up essential online tools for your office to meet your daily business needs. Our services include managing your domain name server, email server, hosting, and—most importantly—providing 24/7 security and support. You focus on your work, and we’ll handle the maintenance.
           </p>
         </div>
+        <div style="height: 100%">
+          <button>
+            Online Infrastructure
+          </button>
+        </div>
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
@@ -76,6 +81,11 @@ export default {
             We understand the importance of your online presence. Our team can manage your website and mobile app environments, ensuring everything runs smoothly. We also handle domain name servers and offer reliable support with secure services to keep your digital operations safe and efficient.
           </p>
         </div>
+        <div style="height: 100%">
+          <button>
+            Email Server
+          </button>
+        </div>
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
@@ -89,6 +99,11 @@ export default {
           <p>
             Need reliable email support for your business? We offer robust solutions tailored to your needs, whether you're looking for cloud-based or dedicated options. Our expertise spans popular providers like Office 365, Bluehost, GoDaddy, and many more. Let us help you keep your communication seamless and secure.
           </p>
+        </div>
+        <div style="height: 100%">
+          <button>
+            Contact Us
+          </button>
         </div>
       </swiper-slide>
     </swiper>
