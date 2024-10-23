@@ -52,9 +52,6 @@ export default {
       <swiper-slide>
         <div class="paragraph" center>
           <div class="icon">
-            <div class="cube"></div>
-            <div class="circle"></div>
-            <div class="triangle"></div>
             <i class="fas fa-briefcase"></i>
           </div>
           <h1 value="What can we do?"></h1>
@@ -64,16 +61,13 @@ export default {
         </div>
         <div style="height: 100%">
           <button>
-            Online Infrastructure
+            Contact Us
           </button>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
           <div class="icon">
-            <div class="cube"></div>
-            <div class="circle"></div>
-            <div class="triangle"></div>
             <i class="fas fa-globe"></i>
           </div>
           <h1 value="We can maintain your online infrastructure!"></h1>
@@ -83,16 +77,13 @@ export default {
         </div>
         <div style="height: 100%">
           <button>
-            Email Server
+            Contact Us
           </button>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
           <div class="icon">
-            <div class="cube"></div>
-            <div class="circle"></div>
-            <div class="triangle"></div>
             <i class="fas fa-mail-bulk"></i>
           </div>
           <h1 value="We can fix your email problems!"></h1>
