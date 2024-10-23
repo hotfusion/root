@@ -59,7 +59,7 @@ export default {
         </div>
         <h1 value="We ar affordable"></h1>
         <p>
-          Sometimes the budget for your project has limits and you need a quick solution and and not expensive.
+          We solve your IT
         </p>
       </div>
     </swiper-slide>

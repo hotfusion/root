@@ -65,6 +65,12 @@ export default {
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
+          <div class="icon">
+            <div class="cube"></div>
+            <div class="circle"></div>
+            <div class="triangle"></div>
+            <i class="fas fa-globe"></i>
+          </div>
           <h1 value="We can maintain your online infrastructure!"></h1>
           <p>
             We understand the importance of your online presence. Our team can manage your website and mobile app environments, ensuring everything runs smoothly. We also handle domain name servers and offer reliable support with secure services to keep your digital operations safe and efficient.
@@ -73,6 +79,12 @@ export default {
       </swiper-slide>
       <swiper-slide>
         <div class="paragraph" center>
+          <div class="icon">
+            <div class="cube"></div>
+            <div class="circle"></div>
+            <div class="triangle"></div>
+            <i class="fas fa-mail-bulk"></i>
+          </div>
           <h1 value="We can fix your email problems!"></h1>
           <p>
             Need reliable email support for your business? We offer robust solutions tailored to your needs, whether you're looking for cloud-based or dedicated options. Our expertise spans popular providers like Office 365, Bluehost, GoDaddy, and many more. Let us help you keep your communication seamless and secure.

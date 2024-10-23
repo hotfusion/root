@@ -59,7 +59,7 @@ export default {
         <div class="cube"></div>
         <div class="circle"></div>
         <div class="triangle"></div>
-        <i class="fas fa-server"></i>
+        <i class="fas fa-paper-plane"></i>
       </div>
       <h1 value="Contact Us">
       </h1>
