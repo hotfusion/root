@@ -58,7 +58,10 @@ export default {
         </p>
       </div>
       <div style="height: 100%">
-        <button>Contact Us</button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
+          Contact Us
+        </button>
       </div>
     </swiper-slide>
     <swiper-slide>
@@ -73,7 +76,10 @@ export default {
         </p>
       </div>
       <div style="height: 100%">
-        <button>Contact Us</button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
+          Contact Us
+        </button>
       </div>
     </swiper-slide>
   </swiper>

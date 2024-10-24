@@ -60,7 +60,8 @@ export default {
         </p>
       </div>
       <div style="height: 100%">
-        <button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
           Get a Quote
         </button>
       </div>
@@ -77,7 +78,8 @@ export default {
         <p>Ideal for minor website updates, troubleshooting, and general maintenance tasks. Perfect for keeping your existing platform running smoothly.</p>
       </div>
       <div style="height: 100%">
-        <button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
           Get a Quote
         </button>
       </div>
@@ -94,7 +96,8 @@ export default {
         <p>Suitable for building new website features, setting up e-commerce platforms, or integrating third-party payment solutions. This level covers most standard development needs.</p>
       </div>
       <div style="height: 100%">
-        <button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
           Get a Quote
         </button>
       </div>
@@ -111,7 +114,8 @@ export default {
         <p>For complex custom application development, enterprise-level integrations, or high-level consulting. This tier addresses challenging projects requiring specialized skills and expertise.</p>
       </div>
       <div style="height: 100%">
-        <button>
+        <button v-on:click="$emit('goto','contactus')">
+          <i class="fas fa-angle-right"></i>
           Get a Quote
         </button>
       </div>

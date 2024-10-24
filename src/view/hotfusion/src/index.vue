@@ -15,8 +15,12 @@ export default {
       Scrollbar,
       A11y
     ],
+    swiper : false
   }),
   methods : {
+    onSwiper(e){
+      this.swiper = e;
+    },
     onSlideChange(e){
       this.activeIndex = e.activeIndex;
       setTimeout(() => {
@@ -46,6 +50,10 @@ export default {
           }
         })
       })
+    },
+    goTo(e){
+      if(e === 'contactus')
+        this.swiper.slideTo(4);
     }
   },
   mounted() {
@@ -57,18 +65,18 @@ export default {
 </script>
 <template>
   <container ref="container">
-    <swiper :pagination="true"  style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
+    <swiper @swiper="onSwiper" :pagination="true"  style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50" @slideChange="onSlideChange">
       <swiper-slide>
-        <Home></Home>
+        <Home  v-on:goto="goTo"></Home>
       </swiper-slide>
       <swiper-slide>
-        <Aboutus :parentIndex="activeIndex"/>
+        <Aboutus v-on:goto="goTo" :parentIndex="activeIndex"/>
       </swiper-slide>
       <swiper-slide>
-        <PriceList></PriceList>
+        <PriceList  v-on:goto="goTo"></PriceList>
       </swiper-slide>
       <swiper-slide>
-        <Contactus :enable="activeIndex === 3"></Contactus>
+        <Contactus  v-on:goto="goTo" @completed="swiper.slideTo(1)" :enable="activeIndex === 3"></Contactus>
       </swiper-slide>
     </swiper>
   </container>

@@ -60,7 +60,8 @@ export default {
           </p>
         </div>
         <div style="height: 100%">
-          <button>
+          <button v-on:click="$emit('goto','contactus')">
+            <i class="fas fa-angle-right"></i>
             Contact Us
           </button>
         </div>
@@ -76,7 +77,8 @@ export default {
           </p>
         </div>
         <div style="height: 100%">
-          <button>
+          <button v-on:click="$emit('goto','contactus')">
+            <i class="fas fa-angle-right"></i>
             Contact Us
           </button>
         </div>
@@ -92,7 +94,8 @@ export default {
           </p>
         </div>
         <div style="height: 100%">
-          <button>
+          <button v-on:click="$emit('goto','contactus')">
+            <i class="fas fa-angle-right"></i>
             Contact Us
           </button>
         </div>

@@ -170,12 +170,41 @@ html {
           font-weight: bold;
           font-size: 15px;
           padding: 15px;
-          background-color: #f8f8f8 !important;
+          border-radius: 30px;
+          background-color: transparent !important;
+          border: solid 4px #fff;
+          color: #fff;
+          i,svg{
+            font-size: 20px;
+            margin-right: 10px;
+            color: #fffdfa;
+          }
+          &.disabled{
+            opacity: 0.2 !important;
+          }
           .container {
-            background-color: #f8f8f8 !important;
+            &.disabled {
+              opacity: 0.2 !important;
+            }
+            background-color: transparent !important;
             span {
               font-size: 15px;
+              color: #fff;
             }
+          }
+        }
+      }
+      .contactus {
+        .splitpanes__pane{
+          overflow: visible;
+          button{
+            border: none;
+            &[disabled] {
+             opacity: 0.2 !important;
+              background-color: #121418 !important
+            }
+            background-color: #1bb261 !important;
+            color: #fff;
           }
         }
       }
@@ -187,6 +216,15 @@ html {
   .swiper-slide {
     &::-webkit-scrollbar{
       width: 0;
+    }
+  }
+  .paragraph{
+    .icon {
+      margin-bottom: 10px !important;
+      height: 100px !important;
+      i,svg {
+        font-size: 90px !important;
+      }
     }
   }
 }

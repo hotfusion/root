@@ -1,12 +1,33 @@
 <script  lang="ts">
 import {Fetch,Layout,Component,Components, Element, Warning} from "@hotfusion/ui"
 import * as KUTE from "kute.js";
+import {SwiperSlide} from "swiper/vue";
+import {A11y, Navigation, Pagination, Scrollbar} from "swiper/modules";
 export default {
+  components: {SwiperSlide},
   props:['enable'],
   data : () => ({
     Layout : new Layout('main'),
+    activeIndex: 0,
+    modules: [
+      Navigation,
+      Pagination,
+      Scrollbar,
+      A11y
+    ]
   }),
   methods: {
+    onSwiper(swiper){
+      this.swiper = swiper;
+    },
+    close(){
+      this.swiper.allowSlideNext = true;
+      this.swiper.allowSlidePrev = true;
+      this.swiper.slideTo(0);
+      this.swiper.allowSlideNext = false;
+      this.swiper.allowSlidePrev = false;
+      this.$emit('completed')
+    },
     onSlideChange(e){
       setTimeout(() => {
         let element = this.$refs.paragraph.querySelector('h1');
@@ -21,7 +42,7 @@ export default {
           elements : [
             new Element('input')
                 .setId('name')
-                .setValue('vadim')
+                .setValue('')
                 .setLabel('Full Name')
                 .setIcon('fas fa-user')
                 .setPlaceholder('Enter your last and first name')
@@ -29,7 +50,7 @@ export default {
                 .setMinValueLength(4)
                 .setMaxValueLength(100),
             new Element('input')
-                .setValue('Korolov.vadim@gmail.com')
+                .setValue('')
                 .setId('email')
                 .setLabel('Email Address')
                 .setIcon('fas fa-at')
@@ -43,7 +64,7 @@ export default {
                     throw new Error('The email address is not valid');
                 }),
             new Element('input')
-                .setValue('5149996659')
+                .setValue('')
                 .setId('phone')
                 .setLabel('Phone Number')
                 .setIcon('fas fa-phone')
@@ -57,7 +78,7 @@ export default {
                     throw new Error('The phone number is not valid');
                 }),
             new Element('textarea')
-                .setValue('Hello, my name is vadim and i am looking for someone to work with!')
+                .setValue('')
                 .setId('message')
                 .setLabel('Message')
                 .setIcon('fas fa-envelope-square')
@@ -67,17 +88,24 @@ export default {
                 .setMaxValueLength(2000)
 
           ],
-          footer : [
+          footer   : [
               new Element('button').setLabel('Send us a message').setDisable(true).on('click', ({element}) => {
                 element.setBusy(true);
+                element.setLabel('Wait, we are sending your email...')
                 Fetch.post('https://hotfusion.ca/cgi-bin/mail.php',this.Layout[0].component.getFormAsObject()).then(e => {
-                  console.log('retrun',e);
+                  if(e.status === 'error')
+                    return alert('Sorry, but your message could not be sent. Check the fields and make sure fields are not empty!');
+                  this.swiper.allowSlideNext = true;
+                  this.swiper.slideTo(2);
+                  this.Layout[0].component.elements.forEach(x => x.setValue(''));
+                  element.setLabel('Send us a message');
+                  element.setBusy(false);
                 })
               })
           ]
         }).on('keydown',async () => {
           let isValid = this.Layout[0].component.isValid()
-            this.Layout[0].component.footer[0].setDisable(!isValid);
+          this.Layout[0].component.footer[0].setDisable(!isValid);
         })
     );
     setTimeout(() => {
@@ -102,20 +130,46 @@ export default {
 </script>
 
 <template>
-    <div class="paragraph" center ref="paragraph">
-      <div class="icon">
-        <div class="cube"></div>
-        <div class="circle"></div>
-        <div class="triangle"></div>
-        <i class="fas fa-paper-plane"></i>
+  <swiper
+      class="contactus"
+      :allowSlideNext = "false"
+      :allowSlidePrev = "false"
+      @swiper="onSwiper"
+      style="height: 100%;" :modules="modules" :slides-per-view="1" :space-between="50">
+    <swiper-slide>
+      <div class="paragraph" center ref="paragraph">
+        <div class="icon">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <h1 value="Contact Us">
+        </h1>
+        <div class="line"></div>
+        <p>
+          It’s free to reach out to us, so why not? Send us your inquiry, and we'll get back to you as soon as possible.
+        </p>
       </div>
-      <h1 value="Contact Us">
-      </h1>
-      <div class="line"></div>
-      <p>
-        It’s free to reach out to us, so why not? Send us your inquiry, and we'll get back to you as soon as possible.
-      </p>
-    </div>
-    <layout :layout="Layout"></layout>
-
+      <layout :layout="Layout"></layout>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="paragraph" center ref="paragraph">
+        <div class="icon">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <h1 value="You message has been recived!">
+        </h1>
+        <div class="line"></div>
+        <p>
+          Thank you for reaching out! We've received your message and will respond as soon as possible. Your inquiry is important to us, and we'll get back to you promptly. If you have any urgent concerns, please feel free to contact us directly.
+          <br><br>
+          <button style="width: 160px" @click="close" >
+            <i class="fas fa-angle-right"></i>
+            Return To Home
+          </button>
+        </p>
+      </div>
+    </swiper-slide>
+  </swiper>
 </template>
+<style lang="less" scoped>
+
+</style>
