@@ -30,9 +30,17 @@ export default {
     },
     onSlideChange(e){
       setTimeout(() => {
-        let element = this.$refs.paragraph.querySelector('h1');
-        element.innerHTML = '';
-        KUTE.default.to(element, {text: element.getAttribute('value')}).start();
+        let p = [...this.$el.querySelectorAll('.paragraph')];
+
+        p.forEach((x, i) => {
+
+            let element = x.querySelector('h1');
+            if(element){
+              element.innerHTML = '';
+              KUTE.default.to(element, {text: element.getAttribute('value')}).start();
+            }
+
+        })
       })
     }
   },
@@ -109,7 +117,9 @@ export default {
         })
     );
     setTimeout(() => {
-      this.onSlideChange();
+      this.onSlideChange({
+        activeIndex:0
+      });
     },100)
   },
   watch : {
@@ -118,11 +128,13 @@ export default {
         layout.component.elements
             .forEach(item => item.setDisable(!value));
         if(!index && value)
-          layout.component.elements[index].setFocus()
+          layout.component.elements[index].setFocus();
 
       });
       setTimeout(() => {
-        this.onSlideChange();
+        this.onSlideChange({
+          activeIndex:0
+        });
       },100)
     }
   }
@@ -153,9 +165,9 @@ export default {
     <swiper-slide>
       <div class="paragraph" center ref="paragraph">
         <div class="icon">
-          <i class="fas fa-paper-plane"></i>
+          <i class="fas fa-envelope"></i>
         </div>
-        <h1 value="You message has been recived!">
+        <h1 value="You message has been received!">
         </h1>
         <div class="line"></div>
         <p>

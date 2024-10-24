@@ -73,7 +73,7 @@ export default {
         <Aboutus v-on:goto="goTo" :parentIndex="activeIndex"/>
       </swiper-slide>
       <swiper-slide>
-        <PriceList  v-on:goto="goTo"></PriceList>
+        <PriceList  v-on:goto="goTo" :parentIndex="activeIndex"></PriceList>
       </swiper-slide>
       <swiper-slide>
         <Contactus  v-on:goto="goTo" @completed="swiper.slideTo(1)" :enable="activeIndex === 3"></Contactus>

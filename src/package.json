@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "aws": "ssh -i 'hotfusion.pem' ec2-user@ec2-18-220-23-158.us-east-2.compute.amazonaws.com"
   },
   "repository": {
     "type": "git",
